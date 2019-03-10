@@ -1,9 +1,5 @@
-# Язык java. Travis CI поддерживает другие языки тоже.
-language: java
-# Режим обычного пользователя для сборки проекта.
-sudo: false
-
 # guides.gradle.org/executing-gradle-builds-on-travisci/
+language: java
 install: true
 jdk:
   - oraclejdk8
