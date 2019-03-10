@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+  <bean name="spel" class="e.domain.Person">
+    <property name="name" value="Mara"/>
+    <property name="age" value="#{person.age - 3}"/>
+    <property name="height" value="150"/>
+    <property name="programmer" value="false"/>
+    <property name="id" value="600000000000"/>
+  </bean>
+</beans>       

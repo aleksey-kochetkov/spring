@@ -1,0 +1,27 @@
+plugins {
+  id 'com.github.johnrengelman.shadow' version '5.0.0'
+  id 'java'
+  id 'eclipse'
+}
+jar {
+  manifest {
+    attributes 'Main-Class': 'e.Main'
+  }
+}
+// Output to build/libs/shadow.jar
+shadowJar {
+   baseName = 'J0309child'
+   classifier = 'fat'
+   version = null
+}
+//task copyDependencies(type: Copy) {
+//  from configurations.compileClasspath
+//  into 'build/libs'
+//}
+repositories {
+  jcenter()
+}
+dependencies {
+  implementation 'org.springframework:spring-context:5.1.5.RELEASE'
+  testImplementation 'junit:junit:4.12'
+}
