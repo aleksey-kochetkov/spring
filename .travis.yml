@@ -4,4 +4,9 @@ install: true
 jdk:
   - oraclejdk8
 script:
-  - ./gradlew build --scan -s
+# Интрекатив в консоли!
+# Publishing a build scan to scans.gradle.com requires accepting the
+# Gradle Terms of Service defined at https://gradle.com/terms-of-service.
+# Do you accept these terms?
+#  - ./gradlew build --scan -s
+  - ./gradlew build
