@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd">
+  <context:component-scan base-package="e"/>
+  <bean id="twenty" class="e.domain.Item">
+    <constructor-arg name="code" value="1020"/>
+    <constructor-arg name="descript" value="Тысяча двадцать"/>
+  </bean>
+  <bean id="forty" class="e.domain.Item">
+    <constructor-arg name="code" value="1040"/>
+    <constructor-arg name="descript" value="Тысяча сорок"/>
+  </bean>
+  <bean id="fifty" class="e.domain.Item">
+    <constructor-arg name="code" value="1050"/>
+    <constructor-arg name="descript" value="Тысяча пятьдесят"/>
+  </bean>
+  <util:map id="items" map-class="java.util.HashMap">
+    <entry key="1020">
+      <ref bean="twenty"/>
+    </entry>
+    <entry key="1040">
+      <ref bean="forty"/>
+    </entry>
+    <entry key="1050">
+      <ref bean="fifty"/>
+    </entry>
+  </util:map>
+  <util:list id="list" list-class="java.util.LinkedList">
+    <ref bean="twenty"/>
+    <value>Зелёневенький</value>
+    <value>15</value>
+  </util:list>
+  <util:set id="set" set-class="java.util.TreeSet">
+    <ref bean="twenty"/>
+    <ref bean="forty"/>
+    <ref bean="fifty"/>
+  </util:set>
+  <util:properties id="props">
+    <prop key="one">One</prop>
+    <prop key="two">Two</prop>
+    <prop key="three">Three</prop>
+  </util:properties>
+</beans>
