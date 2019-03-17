@@ -11,7 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanLifecycleTest {
-
   @Test
   public void whenSimple() throws IOException {
     ByteArrayOutputStream ba = new ByteArrayOutputStream();
@@ -24,18 +23,27 @@ public class BeanLifecycleTest {
       System.setOut(tmp);
     }
     ba.close();
-    String[] expected = {"I: Construction",
-                         "II.1: Setter dependency injection",
-                         "II.2: ApplicationContextAware"};
+    String[] expected = {"II: Construction",
+                        "III: Setter dependency injection",
+                        "IV: BeanNameAware",
+                        "V: BeanClassLoaderAware",
+                        "VI: ApplicationContextAware",
+                        "VII: @PostConstruct",
+                        "VIII: InitializingBean#afterPropertiesSet()",
+                        "IX: <bean init-method=\"init\"/>",
+                        "X: @PreDestroy",
+                        "XI: DisposableBean#destroy()",
+                        "XII: <bean destroy-method=\"destroyMethod\"/>"};
     int i = 0;
     try (Scanner in =
                new Scanner(new ByteArrayInputStream(ba.toByteArray()))) {
       while (in.hasNextLine()) {
-        if (expected[i].equals(in.nextLine())) {
+        String s = in.nextLine();
+        if (i < expected.length && expected[i].equals(s)) {
           i++;
         }
       }
     }
-    assertEquals(3, i);
+    assertEquals(expected.length, i);
   }
 }
