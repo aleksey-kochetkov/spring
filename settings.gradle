@@ -1,2 +1,3 @@
 rootProject.name = 'spring'
-include 'J0309child', 'J0310lum', 'J0312collections', 'J0314lifeccl'
+include 'J0309child', 'J0310lum', 'J0312collections', 'J0314lifeccl',
+ 'J0321factory'
