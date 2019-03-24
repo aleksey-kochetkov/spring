@@ -1,0 +1,37 @@
+plugins {
+  id 'com.github.johnrengelman.shadow' version '5.0.0'
+  id 'java'
+}
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+jar {
+  manifest {
+    attributes 'Main-Class': 'e.Client'
+  }
+}
+import com.github.jengelman.gradle.plugins.shadow.transformers.*
+shadowJar {
+//  baseName = 'J0312tmp'
+//  classifier = 'all'
+//  version = null
+  // Required for Spring
+  mergeServiceFiles()
+  append 'META-INF/spring.handlers'
+  append 'META-INF/spring.schemas'
+  append 'META-INF/spring.tooling'
+  transform(PropertiesFileTransformer) {
+    paths = ['META-INF/spring.factories']
+    mergeStrategy = "append"
+  }
+}
+//task copyDependencies(type: Copy) {
+//  from configurations.compileClasspath
+//  into 'build/libs'
+//}
+repositories {
+  jcenter()
+}
+dependencies {
+  implementation 'org.springframework:spring-context:5.1.5.RELEASE'
+  testImplementation 'junit:junit:4.12'
+}
